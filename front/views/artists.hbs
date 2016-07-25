@@ -3,8 +3,20 @@
 {{> head}}
 <title>Artists</title>
 <style>
-	    .footer{
-    	position:relative;
+    .footer{
+		position:relative;
+    }
+    .one-third{
+    	height: 300px !important;
+    	    	margin-bottom: 10px;
+    }
+    .img-thumb{
+    	height: 100%;
+    	width: 100%;
+    }
+    .artist-thumbnail{
+    	height: 100%;
+    	width: 100%;	
     }
 </style>
 <body class="page page-id-361 page-template page-template-template-left-php" onload="loadArtists()">
@@ -20,6 +32,21 @@
 			<div class="container">
 				<p>&nbsp;</p>
 				<div class="listing-block" id="content">
+					{{#each artists}}
+						<div class="one-third column">
+							<div class="artist-thumbnail">
+								<a href="artist/{{this._id}}">
+									<img src="{{this.img}}" alt="{{this.name}}" class="img-thumb"/>
+								</a>
+								<div class="ribbon-caption">
+									<a href="artist/{{this._id}}" class="ribbon-caption-title">
+										<span>{{this.name}}</span>
+										<span class="ribbon-caption-background"></span>
+									</a>
+								</div>
+							</div>	
+						</div>
+					{{/each}}
 					
 				</div>
 			</div>	
@@ -28,49 +55,7 @@
 		{{> footer}}
 
 	<script>
-		var artists = {{{stringify artists}}};
-
-		function loadArtists(){
-			var htmlblock = '';
-			var index = 1;
-			for(var i in artists){
-				console.log(i);
-				var html = '<div class="one-third column ">'+
-					'<div class="artist-thumbnail">'+
-						'<a href="../artist/'+artists[i]._id+'">'+
-							'<img width="450" height="450" src="'+artists[i].img+'" class="fullwidth wp-post-image" alt="'+artists[i].name+'"/></a>'+
-						'<div class="ribbon-caption">'+
-							'<a href="../artist/'+artists[i]._id+'" class="ribbon-caption-title">'+
-								'<span>'+artists[i].name+'</span>'+
-								'<span class="ribbon-caption-background"></span>'+
-							'</a>'+
-						'</div>'+
-					'</div>'+
-				'</div>';
-				var html2 = '<div class="one-third column last">'+
-					'<div class="artist-thumbnail">'+
-						'<a href="../artist/'+artists[i]._id+'">'+
-							'<img width="450" height="450" src="'+artists[i].img+'" class="fullwidth wp-post-image" alt="'+artists[i].name+'"/></a>'+
-						'<div class="ribbon-caption">'+
-							'<a href="../artist/'+artists[i]._id+'" class="ribbon-caption-title">'+
-								'<span>'+artists[i].name+'</span>'+
-								'<span class="ribbon-caption-background"></span>'+
-							'</a>'+
-						'</div>'+
-					'</div>'+
-				'</div>';
-				if((artists[i]) != null && (index % 3 == 0)){
-					htmlblock += html2;
-					htmlblock += '<div class="clear"></div>';
-					index++;
-				}	
-				else{
-					htmlblock += html;
-					index++;
-				}
-			}
-			document.getElementById('content').innerHTML += htmlblock;
-		}
+		
 	</script>
 </body>
 </html>
