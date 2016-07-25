@@ -1,0 +1,86 @@
+<html>
+<head>
+    <title>Editeur d'articles</title>
+    {{> head}}
+    <style>
+        .footer {
+            position: absolute !important;
+        }
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+</head>
+<body onload="load()">
+{{> navbar}}
+
+<div class="page editorPage">
+
+    <div class="editorHeader col-xs-12">
+        <h4 class="col-xs-12 col-sm-3">
+            <i class="fa fa-file-text"></i> Editeur d'articles
+        </h4>
+    </div>
+    <div class="form-creator">    
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">Nom de l'artiste </span>
+            <input class="form-control" type="text" id="titre" name="titre" placeholder="Nom de l'artiste" required/>
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">Image </span>
+            <input class="form-control" type = "url" id="img" name="img" placeholder="URL de l'image de fond" required/>
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">Son </span>    
+            <input class="form-control" type = "url" id="sound" name="sound" placeholder="URL de la playlist" required/>
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">Biographie</span>
+            <textarea class="form-control" rows="5" id="markdown"></textarea>
+        </div>     
+        <button class="col-xs-12 col-sm-3 btn" id="sub" onclick="save()">Sauvegarder</button>
+    </div>   
+
+    <script>
+    ////////////////////////////////////////ARTICLE///////////////////////////////////////////////////////////
+    function save(){
+        var baseurl = 'https://www.mixcloud.com/widget/iframe/?feed=';
+        var url = encodeURI(baseurl.concat($('#sound').val()));
+        console.log(url);
+        var data = {
+            article : encodeURIComponent($('#markdown').val()),
+            name : $('#titre').val(),
+            img : $('#img').val(),
+            sound : url
+        };
+        console.log(data);
+        var form = $('<form style="display: none" action="' + "/admin/artist/save" + '" method="post">' +
+                '<input type="text" name="name" value="' + data.name + '" required/>' +
+                '<input type="text" name="article" value="' + data.article + '" required/>' +
+                '<input type="url" name="img" value="' + data.img + '" required/>' +
+                '<input type="url" name="sound" value="' + data.sound + '" required/>' +
+                '<input type="submit" value="Submit" />' +
+                '</form>');
+        $(document).ready(function(){
+
+            $(form).appendTo('body').submit();
+        });
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        function load() {
+        var name = {{{stringify name}}};
+        var img = {{{stringify img}}};
+        var article = {{{stringify article}}};
+        var sound = {{{stringify sound}}};
+
+        if (name != false && img != false && article != false && sound != false) {
+            $('#titre').val(name);
+            $('#img').val(img);
+            $('#sound').val(sound);
+            $('#markdown').val(article);
+        }
+        }
+
+    </script>
+</div>
+{{> footer}}
+</body>
+</html>

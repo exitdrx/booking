@@ -13,6 +13,7 @@
                             name : doc[i].name,
                             img : doc[i].img
                         };
+                        console.log(x._id);
                         array.push(x);
                     }
                 }
