@@ -1,0 +1,148 @@
+<html lang="en-US">
+	{{> head}}
+	<title>Admin</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+	<style>
+		.info {
+			display:block;
+		}
+		.book {
+			width: 100%;
+			overflow: scroll;
+			height: 100px;
+
+		}
+		.artist-message {
+			width: 100%;
+			overflow: scroll;
+			height: 100px;
+		}
+		.footer {
+			position: relative !important;
+		}
+
+	</style>
+	<body onload="loadArticles()">
+		{{> navbar}}
+		<div class="wrapper site-wrapper">
+			<button id="logout" onClick="logout()">Logout</button>
+			<div class=" page adminPage col-xs-12">
+	    		<div class="adminFrame col-xs-12 col-md-8 col-md-offset-2">
+	        		<div class="frameHeader col-xs-12">
+	            		<i class="fa fa-wrench"></i><u><b><h3>Administration</h3></b></u>
+	        		</div>
+
+	       			<div class="adminFrame-Content col-xs-12" >
+
+	            		<div class="contentBlock col-xs-12">
+	                		<div class="contentHeader col-xs-12">Gestion des artistes</div>
+	                			<div class="contentBody col-xs-12">
+	                    			<div id="articles" class="col-xs-12">
+	                    		</div>
+			                    <div class="articlesMgtCmds col-xs-12">
+			                        <button class="btn" onclick="edit()"><i class="fa fa-pencil"></i>Editer</button>
+			                        <button class="btn" onclick="deleteArticle()"><i class="fa fa-trash"></i>Supprimer</button>
+			                        <button class="btn" onclick="post()"><i class="fa fa-paper-plane"></i>Poster</button>
+			                        <button class="btn" onclick="create()"><i class="fa fa-plus"></i>Nouvel artiste</button>
+			                    </div>
+	                		</div>
+	            		</div>
+					</div>
+					<div id="booking" class="booking">
+					</br>
+						<u><b><h3>Booking messages</h3></b></u>
+
+					</div>
+					<div id="contact">
+					</br>
+						<u><b><h3>Contact messages</h3></b></u>
+					</div>
+				</div>	
+			</div>
+			{{> footer}}
+		</div>	
+		<script>
+				var booking = {{{stringify booking}}};
+				var contact = {{{stringify contact}}};
+			    var articles = {{{stringify article}}};
+
+
+			    function loadArticles(){
+			        if(booking){
+			        	var html = '';
+			        	for(var i in booking){
+			        		var htmlBooking ='<div class="artist-message"><div class="input-group input-group-lg"><span class="input-group-addon">Artist </span><span class="form-control">'+booking[i].artist+'</span></div>'+
+			        		'<div class="input-group input-group-lg"><span class="input-group-addon">State </span><span class="form-control">'+booking[i].state+'</span></div>'+
+			        		'<div class="input-group input-group-lg"><span class="input-group-addon">Suburb </span><span class="form-control">'+booking[i].suburb+
+			        		'</span></div>'+'<div class="input-group input-group-lg"><span class="input-group-addon">State </span><span class="form-control">'+booking[i].address+'</span></div>'+
+			        		'<div class="input-group input-group-lg"><span class="input-group-addon">Venue </span><span class="form-control">'+booking[i].venue+
+			        		'</span></div>'+'<div class="input-group input-group-lg"><span class="input-group-addon">Date </span><span class="form-control">'+booking[i].date+'</span></div>'+
+			        		'<div class="input-group input-group-lg"><span class="input-group-addon">Email </span><span class="form-control">'+booking[i].email+
+			        		'</span></div>'+'<div class="input-group input-group-lg"><span class="input-group-addon">Phone </span><span class="form-control">'+booking[i].phone+
+			        		'</span></div>'+'<div class="input-group input-group-lg"><span class="input-group-addon">Mobile </span><span class="form-control">'+booking[i].mobile+
+			        		'</span></div>'+'<div class="input-group input-group-lg"><span class="input-group-addon">Last Name </span><span class="form-control">'+booking[i].lastname+'</span></div>'+
+			        		'<div class="input-group input-group-lg"><span class="input-group-addon">Name </span><span class="form-control">'+booking[i].name+'</span></div></div>';
+
+			        		html += htmlBooking;
+			        	}
+			        	document.getElementById('booking').innerHTML += html;
+
+			        }
+
+			        if(contact){
+			        	var html = '';
+			        	for(var i in contact){
+			        		var htmlcontact = '<div class="book">'+
+			        		'<div class="input-group input-group-lg"><span class="input-group-addon">Name </span><span class="form-control">'+contact[i].name +'</span></div>'+
+			        		'<div class="input-group input-group-lg"><span class="input-group-addon">Email </span><span class="form-control">'+contact[i].email +'</span></div>'+
+			        		'<div class="input-group input-group-lg"><span class="input-group-addon">Phone </span><span class="form-control">'+contact[i].phone +'</span></div>'+
+			        		'<div class="input-group input-group-lg"><span class="input-group-addon">Message </span><span class="form-control">'+contact[i].message +'</span></div>'+
+			        		'</div>'
+			        		html += htmlcontact;
+			        	}
+			        	document.getElementById('contact').innerHTML += html;
+			        }
+
+			        var htmlbloc = ' <select name="articles" id="articls">';
+			        if(articles) {
+			            for (var article in articles) {
+			                htmlbloc += '<option value="' + articles[article]._id + '">' + articles[article].name + '</option>';
+			            }
+			            htmlbloc += '</select>';
+			            document.getElementById('articles').innerHTML += htmlbloc;
+			        }
+			    }
+
+			    function edit(){
+			        var data ={
+			            _id : $('#articls option:selected').val()
+			        };
+			        window.location = "/admin/artist/editArticle?id=" + data._id;
+			    }
+			    function deleteArticle(){
+			        var data ={
+			            _id : $('#articls option:selected').val()
+			        };
+			        window.location = "/admin/artist/deleteArticle?id=" + data._id;
+			    }
+			    function post(){
+			        var data ={
+			            _id : $('#articls option:selected').val()
+			        };
+			        window.location = "/admin/artist/postArticle?id=" + data._id;
+			    }
+			    function create(){
+			        window.location = "/artist";
+			    }
+			    function logout(callback){
+					    var xmlHttp = new XMLHttpRequest();
+					    xmlHttp.onreadystatechange = function() { 
+					        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+					            callback(xmlHttp.responseText);
+					    }
+					    xmlHttp.open("GET", '/logout', true); // true for asynchronous 
+					    xmlHttp.send(null);
+				}
+		</script>
+	</body>
+</html>

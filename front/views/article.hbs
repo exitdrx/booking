@@ -1,0 +1,56 @@
+<html lang="en-US">
+	{{> head}}
+	<title>{{{article.name}}}</title>
+	<body>
+		<div class="wrapper site-wrapper">
+			{{> navbar}}		
+			<div class="page-title wrapper">
+				<div class="container">
+					<h1>{{{article.name}}}</h1>
+					<div class="clear">
+					</div>
+				</div>	
+			</div><!--/ page title-->
+			<div class="content wrapper">
+				<div class="container">
+					<div class="column two-third"> 
+						<div class="artist-thumbnail">		
+							<img src={{{stringify article.img}}} class="fullwidth" alt={{{stringify article.name}}} />		
+							<div class="ribbon-caption">
+								<div class="ribbon-caption-title">
+									<div class="artist-social-links">							
+										<a href={{{stringify article.sound}}} class="soundcloud" target="_blank" title="Music"></a>
+									</div>
+									<span class="ribbon-caption-background"></span>
+								</div>
+							</div>
+						</div>
+						<div class="content-block single-post">
+							<div class="block-title">
+								<span>Biography</span>
+							</div>
+							<div class="block-content post-content">
+								<p>
+									{{{article.article}}}
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="one-third column last">
+						<div class="content-block widget widget_text">			
+							<div class="textwidget">
+								<iframe width="100%" height="400" src={{{stringify article.sound}}} frameborder="0"></iframe>
+
+							</div>
+						</div>							
+					</div><!--/ sidebar-->
+					<div class="clear"></div>
+	                <div class="clear"></div>
+	                <div class="footer-widgets"></div>
+	                <div class="clear"></div>
+	            </div>
+	        </div><!--/ content-->        
+			{{> footer}}
+		</div><!--/ site-->	
+	</body>
+</html>

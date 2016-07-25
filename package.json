@@ -1,0 +1,40 @@
+{
+  "name": "artistbooking",
+  "version": "1.0.0",
+  "description": "artistbooking",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodejs server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LiazidiAmine/website.git"
+  },
+  "keywords": [
+    "artistbooking",
+    "nodejs"
+  ],
+  "author": "liazidi amine",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LiazidiAmine/website/issues"
+  },
+  "homepage": "https://github.com/LiazidiAmine/website#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^1.2.0",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "hbs": "^4.0.0",
+    "mongodb": "^2.1.19",
+    "mongojs": "^2.4.0",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "path": "^0.12.7",
+    "range-gen": "^1.0.0",
+    "session": "^0.1.0",
+    "uuid": "^2.0.2"
+  }
+}

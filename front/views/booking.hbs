@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	{{> head}}
+    <title>Bookings</title>
+<body onload="loadArtists()">
+    <div class="wrapper site-wrapper">
+        {{> navbar}}
+        <div class="page-title wrapper">
+            <div class="container">
+                <h1>Bookings</h1>
+                <div class="clear"></div>
+            </div>
+        </div><!--/ page title-->
+        <div class="content wrapper">
+            <div class="container">
+                <div class="two-third column post-content">
+                    <p><img alt="makeabooking" class=
+                    "aligncenter size-full wp-image-476" height="157" src=
+                    "http://thatsound.com.au/wp-content/uploads/makeabooking.png"
+                    width="578"></p>
+                    <div class="content-block">
+                        <div class="block-title">
+                            <span></span>
+                        </div>
+                        <div class="block-content">
+                            <div class="frm_forms with_frm_style" id=
+                            "frm_form_2_container">
+                                <form class="frm-show-form" action="/booking" method=
+                                "post" name="form_uvt5og">
+                                    <div class="frm_form_fields">
+                                        <fieldset>
+                                            <div>
+                                                <div class=
+                                                "frm_form_field form-field frm_top_container"
+                                                id="frm_field_8_container">
+                                                    <label class=
+                                                    "frm_primary_label" for=
+                                                    "field_artist"></label>
+                                                    <h2><label class=
+                                                    "frm_primary_label" for=
+                                                    "field_artist">Artist</label></h2><label class="frm_primary_label"
+                                                    for="field_artist"><span class=
+                                                    "frm_required"></span></label>
+                                                    <div class="frm_opt_container" id="artist">
+                                                        
+                                                    </div>
+                                                    <div class="frm_description">
+                                                        Select an Artist or
+                                                        Multiple Artist's for your
+                                                        event you wish to book
+                                                    </div>
+                                                </div>
+                                                <div class=
+                                                "frm_form_field form-field frm_top_container"
+                                                id="frm_field_14_container">
+                                                    <label class=
+                                                    "frm_primary_label"></label>
+                                                    <h2><label class=
+                                                    "frm_primary_label">Your
+                                                    Name</label></h2><label class=
+                                                    "frm_primary_label"><span class="frm_required"></span></label>
+                                                    <input id="field_yourname"
+                                                    name="fname" type=
+                                                    "text" value="">
+                                                </div>
+                                                <div class=
+                                                "frm_form_field form-field frm_top_container"
+                                                id="frm_field_15_container">
+                                                    <label class=
+                                                    "frm_primary_label"></label>
+                                                    <h2><label class=
+                                                    "frm_primary_label">Last
+                                                    Name</label></h2><input id=
+                                                    "field_lastname" name=
+                                                    "lastname" type="text"
+                                                    value="">
+                                                </div>
+                                                <div class=
+                                                "frm_form_field form-field frm_top_container"
+                                                id="frm_field_16_container">
+                                                    <label class=
+                                                    "frm_primary_label"></label>
+                                                    <h2><label class=
+                                                    "frm_primary_label">Mobile</label></h2><label class="frm_primary_label"><span class="frm_required"></span></label>
+                                                    <input id="field_mobile" name=
+                                                    "mobile" type="text"
+                                                    value="">
+                                                </div>
+                                                <div class=
+                                                "frm_form_field form-field frm_top_container"
+                                                id="frm_field_17_container">
+                                                    <label class=
+                                                    "frm_primary_label"></label>
+                                                    <h2><label class=
+                                                    "frm_primary_label">Phone</label></h2><label class="frm_primary_label"><span class="frm_required"></span></label>
+                                                    <input id="field_phone" name=
+                                                    "phone" type="text"
+                                                    value="">
+                                                </div>
+                                                <div class=
+                                                "frm_form_field form-field frm_top_container"
+                                                id="frm_field_18_container">
+                                                    <label class=
+                                                    "frm_primary_label"></label>
+                                                    <h2><label class=
+                                                    "frm_primary_label">Your
+                                                    Email</label></h2><label class=
+                                                    "frm_primary_label"><span class="frm_required"></span></label>
+                                                    <input id="field_youremail"
+                                                    name="email" type=
+                                                    "text" value="">
+                                                </div>
+                                                <div class=
+                                                "frm_form_field form-field frm_top_container"
+                                                id="frm_field_9_container">
+                                                    <label class=
+                                                    "frm_primary_label"></label>
+                                                    <h2><label class=
+                                                    "frm_primary_label">Date
+                                                    Requested</label></h2><label class="frm_primary_label"><span class="frm_required"></span></label>
+                                                    <input id="field_date" name=
+                                                    "date" type="text"
+                                                    value="">
+                                                    <div class="frm_description">
+                                                        D / M / YEAR or Explain
+                                                        multiple dates
+                                                    </div>
+                                                </div>
+                                                <div class=
+                                                "frm_form_field form-field frm_top_container"
+                                                id="frm_field_10_container">
+                                                    <label class=
+                                                    "frm_primary_label"></label>
+                                                    <h2><label class=
+                                                    "frm_primary_label">Venue</label></h2><label class="frm_primary_label"><span class="frm_required"></span></label>
+                                                    <input id="field_venue" name=
+                                                    "venue" type="text"
+                                                    value="">
+                                                </div>
+                                                <div class=
+                                                "frm_form_field form-field frm_top_container"
+                                                id="frm_field_11_container">
+                                                    <label class=
+                                                    "frm_primary_label"></label>
+                                                    <h2><label class=
+                                                    "frm_primary_label">Address</label></h2><label class="frm_primary_label"><span class="frm_required"></span></label>
+                                                    <input id="field_address" name=
+                                                    "address" type="text"
+                                                    value="">
+                                                    <div class="frm_description">
+                                                        Street number & name
+                                                    </div>
+                                                </div>
+                                                <div class=
+                                                "frm_form_field form-field frm_top_container"
+                                                id="frm_field_13_container">
+                                                    <label class=
+                                                    "frm_primary_label"></label>
+                                                    <h2><label class=
+                                                    "frm_primary_label">State</label></h2><label class="frm_primary_label"><span class="frm_required"></span></label>
+                                                    <select class=" auto_width" id=
+                                                    "field_state" name=
+                                                    "state">
+                                                        <option selected value="FRANCE">
+                                                            FR
+                                                        </option>
+                                                        <option value=
+                                                        "International">
+                                                            International
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <p class="submit"><input type="submit" value=
+                                    "Submit Booking Enquiry "></p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="one-third last column"></div>
+                <div class="clear"></div>
+                <div class="footer-widgets"></div>
+                <div class="clear"></div>
+            </div>
+        </div><!--/ content-->
+        {{> footer}}
+    </div>
+    <script>
+    	var artists = {{{stringify artist}}};
+	    function loadArtists(){
+	        var htmlbloc = ' <select name="artist[]" id="artist" multiple>';
+	        if(artists != false) {
+	            for (var artist in artists) {
+	                htmlbloc += '<option value="' + artists[artist].name + '">' + artists[artist].name + '</option>';
+	            }
+	            htmlbloc += '</select>';
+	            document.getElementById('artist').innerHTML += htmlbloc;
+	        }
+    	}
+    </script>
+</body>
+</html>

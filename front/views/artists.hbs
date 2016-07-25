@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-US">
+{{> head}}
+<title>Artists</title>
+<style>
+	.footer {
+		bottom : -3000px;
+	}
+</style>
+<body class="page page-id-361 page-template page-template-template-left-php" onload="loadArtists()">
+	<div class="wrapper site-wrapper">
+		{{> navbar}}
+		<div class="page-title wrapper">
+			<div class="container">
+				<h1>  Artists</h1>
+				<div class="clear"></div>
+			</div>
+		</div><!--/ page title-->
+		<div class="content wrapper">
+			<div class="container">
+				<p>&nbsp;</p>
+				<div class="listing-block" id="content">
+					
+				</div>
+			</div>	
+		</div><!--/ content-->
+	</div><!--/ site-->
+		{{> footer}}
+
+	<script>
+		var artists = {{{stringify artists}}};
+
+		function loadArtists(){
+			var htmlblock = '';
+			var index = 1;
+			for(var i in artists){
+				console.log(i);
+				var html = '<div class="one-third column ">'+
+					'<div class="artist-thumbnail">'+
+						'<a href="../artist/'+artists[i]._id+'">'+
+							'<img width="450" height="450" src="'+artists[i].img+'" class="fullwidth wp-post-image" alt="'+artists[i].name+'"/></a>'+
+						'<div class="ribbon-caption">'+
+							'<a href="../artist/'+artists[i]._id+'" class="ribbon-caption-title">'+
+								'<span>'+artists[i].name+'</span>'+
+								'<span class="ribbon-caption-background"></span>'+
+							'</a>'+
+						'</div>'+
+					'</div>'+
+				'</div>';
+				var html2 = '<div class="one-third column last">'+
+					'<div class="artist-thumbnail">'+
+						'<a href="../artist/'+artists[i]._id+'">'+
+							'<img width="450" height="450" src="'+artists[i].img+'" class="fullwidth wp-post-image" alt="'+artists[i].name+'"/></a>'+
+						'<div class="ribbon-caption">'+
+							'<a href="../artist/'+artists[i]._id+'" class="ribbon-caption-title">'+
+								'<span>'+artists[i].name+'</span>'+
+								'<span class="ribbon-caption-background"></span>'+
+							'</a>'+
+						'</div>'+
+					'</div>'+
+				'</div>';
+				if((artists[i]) != null && (index % 3 == 0)){
+					htmlblock += html2;
+					htmlblock += '<div class="clear"></div>';
+					index++;
+				}	
+				else{
+					htmlblock += html;
+					index++;
+				}
+			}
+			document.getElementById('content').innerHTML += htmlblock;
+		}
+	</script>
+</body>
+</html>
