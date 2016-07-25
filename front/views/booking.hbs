@@ -2,6 +2,25 @@
 <html lang="en-US">
 	{{> head}}
     <title>Bookings</title>
+    <style>
+        .two-third{
+            width: 100% !important;
+        }
+        .frm_form_fields{
+            text-align: center;
+        }
+        .submit{
+            text-align: center;
+            margin-top:10px;
+        }
+        .input-group{
+            margin-top:5px;
+        }
+        p{
+            font-size:10px;
+            font-family: 'Courier New';
+        }
+    </style>
 <body onload="loadArtists()">
     <div class="wrapper site-wrapper">
         {{> navbar}}
@@ -15,8 +34,7 @@
             <div class="container">
                 <div class="two-third column post-content">
                     <p><img alt="makeabooking" class=
-                    "aligncenter size-full wp-image-476" height="157" src=
-                    "http://thatsound.com.au/wp-content/uploads/makeabooking.png"
+                    "aligncenter size-full wp-image-476" height="157" src="img/makeabooking.png"
                     width="578"></p>
                     <div class="content-block">
                         <div class="block-title">
@@ -30,137 +48,65 @@
                                     <div class="frm_form_fields">
                                         <fieldset>
                                             <div>
-                                                <div class=
-                                                "frm_form_field form-field frm_top_container"
-                                                id="frm_field_8_container">
-                                                    <label class=
-                                                    "frm_primary_label" for=
-                                                    "field_artist"></label>
-                                                    <h2><label class=
-                                                    "frm_primary_label" for=
-                                                    "field_artist">Artist</label></h2><label class="frm_primary_label"
-                                                    for="field_artist"><span class=
-                                                    "frm_required"></span></label>
-                                                    <div class="frm_opt_container" id="artist">
-                                                        
-                                                    </div>
-                                                    <div class="frm_description">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">Artist</span>
+                                                    <select class="form-control" name="artist[]" id="artist" multiple>
+                                                        {{#each artists}}
+                                                        <option value="{{this.name}}">{{this.name}}</option>
+                                                        {{/each}}
+                                                    </select>
+                                                </div>
+                                                <div class="frm_description">
+                                                    <p>
                                                         Select an Artist or
                                                         Multiple Artist's for your
                                                         event you wish to book
+                                                    </p>    
                                                     </div>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon glyphicon glyphicon-user"></span>
+                                                    <input class="form-control" placeholder="Your Name" id="field_yourname" name="fname" type="text" required>
                                                 </div>
-                                                <div class=
-                                                "frm_form_field form-field frm_top_container"
-                                                id="frm_field_14_container">
-                                                    <label class=
-                                                    "frm_primary_label"></label>
-                                                    <h2><label class=
-                                                    "frm_primary_label">Your
-                                                    Name</label></h2><label class=
-                                                    "frm_primary_label"><span class="frm_required"></span></label>
-                                                    <input id="field_yourname"
-                                                    name="fname" type=
-                                                    "text" value="">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon glyphicon glyphicon-user"></span>
+                                                    <input class="form-control" id="field_lastname" placeholder="Last Name" name="lastname" type="text" required>
                                                 </div>
-                                                <div class=
-                                                "frm_form_field form-field frm_top_container"
-                                                id="frm_field_15_container">
-                                                    <label class=
-                                                    "frm_primary_label"></label>
-                                                    <h2><label class=
-                                                    "frm_primary_label">Last
-                                                    Name</label></h2><input id=
-                                                    "field_lastname" name=
-                                                    "lastname" type="text"
-                                                    value="">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon glyphicon glyphicon-earphone"></span>
+                                                    <input placeholder="Mobile" class="form-control" id="field_mobile" name="mobile" type="text" required>
                                                 </div>
-                                                <div class=
-                                                "frm_form_field form-field frm_top_container"
-                                                id="frm_field_16_container">
-                                                    <label class=
-                                                    "frm_primary_label"></label>
-                                                    <h2><label class=
-                                                    "frm_primary_label">Mobile</label></h2><label class="frm_primary_label"><span class="frm_required"></span></label>
-                                                    <input id="field_mobile" name=
-                                                    "mobile" type="text"
-                                                    value="">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon glyphicon glyphicon-earphone"></span>
+                                                    <input class="form-control" id="field_phone" placeholder="Phone" name="phone" type="text">
                                                 </div>
-                                                <div class=
-                                                "frm_form_field form-field frm_top_container"
-                                                id="frm_field_17_container">
-                                                    <label class=
-                                                    "frm_primary_label"></label>
-                                                    <h2><label class=
-                                                    "frm_primary_label">Phone</label></h2><label class="frm_primary_label"><span class="frm_required"></span></label>
-                                                    <input id="field_phone" name=
-                                                    "phone" type="text"
-                                                    value="">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">@</span>
+                                                    <input class="form-control" id="field_youremail" name="email" placeholder="Email" type="email">
                                                 </div>
-                                                <div class=
-                                                "frm_form_field form-field frm_top_container"
-                                                id="frm_field_18_container">
-                                                    <label class=
-                                                    "frm_primary_label"></label>
-                                                    <h2><label class=
-                                                    "frm_primary_label">Your
-                                                    Email</label></h2><label class=
-                                                    "frm_primary_label"><span class="frm_required"></span></label>
-                                                    <input id="field_youremail"
-                                                    name="email" type=
-                                                    "text" value="">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon glyphicon glyphicon-calendar"></span>
+                                                    <input class="form-control" id="field_date" placeholder="Date Requested" name="date" type="text">
                                                 </div>
-                                                <div class=
-                                                "frm_form_field form-field frm_top_container"
-                                                id="frm_field_9_container">
-                                                    <label class=
-                                                    "frm_primary_label"></label>
-                                                    <h2><label class=
-                                                    "frm_primary_label">Date
-                                                    Requested</label></h2><label class="frm_primary_label"><span class="frm_required"></span></label>
-                                                    <input id="field_date" name=
-                                                    "date" type="text"
-                                                    value="">
-                                                    <div class="frm_description">
+                                                <div class="frm_description">
+                                                    <p>
                                                         D / M / YEAR or Explain
                                                         multiple dates
-                                                    </div>
+                                                    </p>    
                                                 </div>
-                                                <div class=
-                                                "frm_form_field form-field frm_top_container"
-                                                id="frm_field_10_container">
-                                                    <label class=
-                                                    "frm_primary_label"></label>
-                                                    <h2><label class=
-                                                    "frm_primary_label">Venue</label></h2><label class="frm_primary_label"><span class="frm_required"></span></label>
-                                                    <input id="field_venue" name=
-                                                    "venue" type="text"
-                                                    value="">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon glyphicon glyphicon-exclamation-sign"></span>
+                                                    <input placeholder="Venue" class="form-control" id="field_venue" name="venue" type="text">
                                                 </div>
-                                                <div class=
-                                                "frm_form_field form-field frm_top_container"
-                                                id="frm_field_11_container">
-                                                    <label class=
-                                                    "frm_primary_label"></label>
-                                                    <h2><label class=
-                                                    "frm_primary_label">Address</label></h2><label class="frm_primary_label"><span class="frm_required"></span></label>
-                                                    <input id="field_address" name=
-                                                    "address" type="text"
-                                                    value="">
-                                                    <div class="frm_description">
-                                                        Street number & name
-                                                    </div>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon glyphicon glyphicon-map-marker"></span>
+                                                    <input placeholder="Address" class="form-control" id="field_address" name="address" type="text">
                                                 </div>
-                                                <div class=
-                                                "frm_form_field form-field frm_top_container"
-                                                id="frm_field_13_container">
-                                                    <label class=
-                                                    "frm_primary_label"></label>
-                                                    <h2><label class=
-                                                    "frm_primary_label">State</label></h2><label class="frm_primary_label"><span class="frm_required"></span></label>
-                                                    <select class=" auto_width" id=
-                                                    "field_state" name=
-                                                    "state">
+                                                <div class="frm_description">
+                                                        <p>Street number & name</p>
+                                                </div>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon glyphicon glyphicon-map-marker"></span>
+                                                    <select title="State" class="form-control" id="field_state" name="state">
                                                         <option selected value="FRANCE">
                                                             FR
                                                         </option>
