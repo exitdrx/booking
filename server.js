@@ -71,7 +71,9 @@ function initServer(db){
 	admin.deleteArticle(app, db);
 	admin.postArticle(app, db);
 	admin.postContact(app, db);
+	admin.deleteContact(app, db);
 	admin.postBooking(app, db);
+	admin.deleteBooking(app, db);
 
 	admin.getAdminLogin(app);
 	admin.postLogin(app);

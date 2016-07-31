@@ -137,6 +137,16 @@ function postContact(app, db){
 }
 exports.postContact = postContact;
 
+function deleteContact(app, db){
+    app.post('/contact/delete', isAdmin, function(req, res, next){
+    console.log('delete contact ',req.body.id);
+        if(typeof req.body.id != 'undefined')
+            db.collection('CONTACT').remove({_id: req.body.id});
+        return res.redirect('/admin');
+    });
+}
+exports.deleteContact = deleteContact;
+
 function postBooking(app, db){
     app.post('/booking', function(req, res, next){
         var collection = db.collection('BOOKING');
@@ -164,6 +174,16 @@ function postBooking(app, db){
     })
 }
 exports.postBooking = postBooking;
+
+function deleteBooking(app, db){
+    app.post('/booking/delete', isAdmin, function(req, res, next){
+	console.log('delete booking ',req.body.id);
+        if(typeof req.body.id != 'undefined')
+            db.collection('BOOKING').remove({_id: req.body.id});
+        return res.redirect('/admin');
+    });
+}
+exports.deleteBooking = deleteBooking;
 
 function saveArticle(app, db){
     app.post('/admin/artist/save',isAdmin, function (req, res, next) {

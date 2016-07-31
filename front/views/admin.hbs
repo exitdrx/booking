@@ -48,11 +48,83 @@
 					<div id="booking" class="booking">
 					</br>
 						<u><b><h3>Booking messages</h3></b></u>
-
+						{{#each booking}}
+							<div class="artist-message">
+								<form method="post" action="/booking/delete">
+									<input type="hidden" value={{this._id}} name="id"/>
+									<button type="submit">Delete</button>
+								</form>
+								<div class="input-group input-group-lg">
+									<span class="input-group-addon">Artist </span>
+									<span class="form-control">{{this.artist}}</span>
+								</div>
+			        			<div class="input-group input-group-lg">
+			        				<span class="input-group-addon">State </span>
+			        				<span class="form-control">{{this.state}}</span>
+			        			</div>
+			        			<div class="input-group input-group-lg">
+				        			<span class="input-group-addon">State </span>
+				        			<span class="form-control">{{this.address}}</span>
+				        		</div>
+			        			<div class="input-group input-group-lg">
+			        				<span class="input-group-addon">Venue </span>
+			        				<span class="form-control">{{this.venue}}</span>
+			        			</div>
+			        			<div class="input-group input-group-lg">
+			        				<span class="input-group-addon">Date </span>
+			        				<span class="form-control">{{this.date}}</span>
+			        			</div>
+			        			<div class="input-group input-group-lg">
+			        				<span class="input-group-addon">Email </span>
+			        				<span class="form-control">{{this.email}}</span>
+			        			</div>
+			        			<div class="input-group input-group-lg">
+			        				<span class="input-group-addon">Phone </span>
+			        				<span class="form-control">{{this.phone}}</span>
+			        			</div>
+			        			<div class="input-group input-group-lg">
+			        				<span class="input-group-addon">Mobile </span>
+			        				<span class="form-control">{{this.mobile}}</span>
+			        			</div>
+			        			<div class="input-group input-group-lg">
+			        				<span class="input-group-addon">Last Name </span>
+			        				<span class="form-control">{{this.lastname}}</span>
+			        			</div>
+			        			<div class="input-group input-group-lg">
+			        				<span class="input-group-addon">Name </span>
+			        				<span class="form-control">{{this.name}}</span>
+			        			</div>	        			
+			        		</div>
+			        	{{/each}}
 					</div>
+
 					<div id="contact">
-					</br>
+						</br>
 						<u><b><h3>Contact messages</h3></b></u>
+						{{#each contact}}
+							<div class="book">
+								<form method="post" action="/contact/delete">
+									<input type="hidden" value={{this._id}} name="id"/>
+									<button type="submit">Delete</button>
+								</form>
+			        			<div class="input-group input-group-lg">
+			        				<span class="input-group-addon">Name </span>
+			        				<span class="form-control">{{this.name}}</span>
+			        			</div>
+			        			<div class="input-group input-group-lg">
+			        				<span class="input-group-addon">Email </span>
+			        				<span class="form-control">{{this.email}}</span>
+			        			</div>
+			        			<div class="input-group input-group-lg">
+			        				<span class="input-group-addon">Phone </span>
+			        				<span class="form-control">{{this.phone}}</span>
+			        			</div>
+			        			<div class="input-group input-group-lg">
+			        				<span class="input-group-addon">Message </span>
+			        				<span class="form-control">{{this.message}}</span>
+			        			</div>
+			        		</div>
+			        	{{/each}}	
 					</div>
 				</div>	
 			</div>
@@ -64,40 +136,6 @@
 
 
 			    function loadArticles(){
-			        if(booking){
-			        	var html = '';
-			        	for(var i in booking){
-			        		var htmlBooking ='<div class="artist-message"><div class="input-group input-group-lg"><span class="input-group-addon">Artist </span><span class="form-control">'+booking[i].artist+'</span></div>'+
-			        		'<div class="input-group input-group-lg"><span class="input-group-addon">State </span><span class="form-control">'+booking[i].state+'</span></div>'+
-			        		'<div class="input-group input-group-lg"><span class="input-group-addon">Suburb </span><span class="form-control">'+booking[i].suburb+
-			        		'</span></div>'+'<div class="input-group input-group-lg"><span class="input-group-addon">State </span><span class="form-control">'+booking[i].address+'</span></div>'+
-			        		'<div class="input-group input-group-lg"><span class="input-group-addon">Venue </span><span class="form-control">'+booking[i].venue+
-			        		'</span></div>'+'<div class="input-group input-group-lg"><span class="input-group-addon">Date </span><span class="form-control">'+booking[i].date+'</span></div>'+
-			        		'<div class="input-group input-group-lg"><span class="input-group-addon">Email </span><span class="form-control">'+booking[i].email+
-			        		'</span></div>'+'<div class="input-group input-group-lg"><span class="input-group-addon">Phone </span><span class="form-control">'+booking[i].phone+
-			        		'</span></div>'+'<div class="input-group input-group-lg"><span class="input-group-addon">Mobile </span><span class="form-control">'+booking[i].mobile+
-			        		'</span></div>'+'<div class="input-group input-group-lg"><span class="input-group-addon">Last Name </span><span class="form-control">'+booking[i].lastname+'</span></div>'+
-			        		'<div class="input-group input-group-lg"><span class="input-group-addon">Name </span><span class="form-control">'+booking[i].name+'</span></div></div>';
-
-			        		html += htmlBooking;
-			        	}
-			        	document.getElementById('booking').innerHTML += html;
-
-			        }
-
-			        if(contact){
-			        	var html = '';
-			        	for(var i in contact){
-			        		var htmlcontact = '<div class="book">'+
-			        		'<div class="input-group input-group-lg"><span class="input-group-addon">Name </span><span class="form-control">'+contact[i].name +'</span></div>'+
-			        		'<div class="input-group input-group-lg"><span class="input-group-addon">Email </span><span class="form-control">'+contact[i].email +'</span></div>'+
-			        		'<div class="input-group input-group-lg"><span class="input-group-addon">Phone </span><span class="form-control">'+contact[i].phone +'</span></div>'+
-			        		'<div class="input-group input-group-lg"><span class="input-group-addon">Message </span><span class="form-control">'+contact[i].message +'</span></div>'+
-			        		'</div>'
-			        		html += htmlcontact;
-			        	}
-			        	document.getElementById('contact').innerHTML += html;
-			        }
 
 			        var htmlbloc = ' <select name="articles" id="articls">';
 			        if(articles) {
