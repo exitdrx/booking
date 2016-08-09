@@ -10,7 +10,7 @@ function postLogin(app){
         console.log('POST LOGIN');
         var post = req.body;
         console.log(post);
-        if(post.user === 'admin' && post.password === 'admin'){
+        if(post.user === 'admin' && post.password === 'Password1paris'){
             req.session.user_id = 0123456789;
             res.redirect('/admin');
         } else {
